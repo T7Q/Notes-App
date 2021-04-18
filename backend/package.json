@@ -9,6 +9,7 @@
     "make:migration": "knex migrate:make migration_name",
     "migrate": "knex migrate:latest",
     "make:seed": "knex seed:make seed_name",
+    "migration-down": "knex migrate:down"
     "seeding": "knex seed:run"
   },
   "keywords": [],

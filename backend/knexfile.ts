@@ -1,10 +1,12 @@
+import { knexSnakeCaseMappers } from 'objection';
+
 const knexConfig = {
   development: {
     client: 'pg',
     connection: {
-      user: 'posgtres',
-      password: 'pass',
-      database: 'koadb',
+      database: 'objection_db',
+      user: 'root',
+      password: null,
     },
   },
   migrations: {
@@ -14,6 +16,7 @@ const knexConfig = {
   seeds: {
     directory: './seeds',
   },
+  ...knexSnakeCaseMappers,
 };
 
 export default knexConfig;

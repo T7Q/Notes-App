@@ -8,7 +8,7 @@ import { Model, ForeignKeyViolationError, ValidationError } from 'objection';
 import knexConfig from '../knexfile';
 import bodyParser from 'koa-bodyparser';
 
-import bookController from './controllers/book.controller';
+import noteController from './controllers/note.controller';
 import userController from './controllers/user.controller';
 
 // import jwt from 'koa-jwt';
@@ -29,7 +29,7 @@ const app: Koa = new Koa();
 app.use(bodyParser());
 app.use(cors());
 
-app.use(async (ctx: Koa.Context, next: () => Promise<any>) => {
+app.use(async (ctx: Context, next: () => Promise<any>) => {
   try {
     await next();
   } catch (err) {
@@ -62,8 +62,8 @@ app.use(async (ctx: Koa.Context, next: () => Promise<any>) => {
 //   }),
 // );
 
-app.use(bookController.routes());
-app.use(bookController.allowedMethods());
+app.use(noteController.routes());
+app.use(noteController.allowedMethods());
 app.use(userController.routes());
 app.use(userController.allowedMethods());
 app.use(async (ctx: Koa.Context) => {

@@ -9,9 +9,9 @@ const routerOpts: Router.IRouterOptions = {
 const router: Router = new Router(routerOpts);
 
 router.get('/', async (ctx: Context) => {
-  ctx.body = 'book book book';
-  // const book = Book.query();
-  // ctx.body = await book;
+  // ctx.body = 'book book book';
+  const note = Note.query();
+  ctx.body = await note;
 });
 
 router.get('/:id', async (ctx: Context) => {
