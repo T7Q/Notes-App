@@ -7,10 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
     "make:migration": "knex migrate:make migration_name",
-    "migration-up": "knex migrate:latest",
-    "make:seed": "knex seed:make seed_name",
-    "migration-down": "knex migrate:down",
-    "seed": "knex seed:run"
+    "migrate": "knex migrate:latest --knexfile ./db/knexfile.ts",
+    "make:seed": "knex seed:make nextSeeds --knexfile ./db/knexfile.ts",
+    "seed": "knex seed:run --knexfile ./db/knexfile.ts",
+    "migration-down": "knex migrate:down --knexfile ./db/knexfile.ts"
   },
   "keywords": [],
   "author": "",

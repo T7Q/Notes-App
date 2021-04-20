@@ -5,7 +5,7 @@ import Knex from 'knex';
 
 import { Model, ForeignKeyViolationError, ValidationError } from 'objection';
 
-import knexConfig from '../knexfile';
+import knexConfig from '../db/knexfile';
 import bodyParser from 'koa-bodyparser';
 
 import noteController from './controllers/note.controller';
