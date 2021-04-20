@@ -11,7 +11,7 @@ export async function up(knex: Knex): Promise<void> {
     })
     .createTable('notes', (table: Knex.TableBuilder) => {
       table.increments('id').primary();
-      table.string('author').references('id').inTable('users');
+      table.integer('author').references('id').inTable('users').notNullable();
       table.string('title').notNullable();
       table.string('description').notNullable();
       table.timestamps(true, true);
@@ -19,5 +19,5 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-  await knex.schema.dropTableIfExists('users').dropTableIfExists('notes');
+  await knex.schema.dropTableIfExists('notes').dropTableIfExists('users');
 }

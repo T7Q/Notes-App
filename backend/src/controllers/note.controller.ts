@@ -9,21 +9,21 @@ const routerOpts: Router.IRouterOptions = {
 const router: Router = new Router(routerOpts);
 
 router.get('/', async (ctx: Context) => {
-  // ctx.body = 'book book book';
-  const note = Note.query();
-  ctx.body = await note;
+  const notes = Note.query();
+  ctx.body = await notes;
 });
 
 router.get('/:id', async (ctx: Context) => {
   ctx.body = 'get specific note';
-  // const book = await Book.query().insert(ctx.request.body);
-  // ctx.body = book;
+  const noteId = ctx.params.id;
+  const note = Note.query().findById(noteId);
+  ctx.body = await note;
 });
 
 router.post('/', async (ctx: Context) => {
   ctx.body = 'post notes';
-  // const book = await Book.query().insert(ctx.request.body);
-  // ctx.body = book;
+  await Note.query().insert(ctx.request.body);
+  ctx.body = 'success';
 });
 
 export default router;

@@ -10,7 +10,7 @@ export default class Note extends Model {
     required: ['author', 'title', 'description'],
     properties: {
       id: { type: 'integer' },
-      author: { type: 'string', minLength: 1, maxLength: 255 },
+      author: { type: 'integer' },
       title: { type: 'string', minLength: 1, maxLength: 255 },
       description: { type: 'string', minLength: 1, maxLength: 255 },
     },

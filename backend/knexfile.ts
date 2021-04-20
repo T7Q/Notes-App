@@ -4,9 +4,9 @@ const knexConfig = {
   development: {
     client: 'pg',
     connection: {
-      database: 'objection_db',
-      user: 'root',
-      password: null,
+      database: 'test_db',
+      user: 'tkuumola',
+      password: 'pass',
     },
   },
   migrations: {

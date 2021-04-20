@@ -6,12 +6,13 @@ export async function seed(knex: Knex): Promise<void> {
   await knex.raw('TRUNCATE TABLE "notes" CASCADE');
 
   // Deletes ALL existing entries
-  await knex('table_name').del();
+  await knex('notes').del();
+  await knex('users').del();
 
   // Inserts seed entries
   await knex('users').insert([
     { id: 1, username: 'user', password: 'hello', firstname: 'Jack', lastname: 'Daniels' },
-    { id: 2, username: 'user', password: 'hello', firstname: 'Jane', lastname: 'Doe' },
+    { id: 2, username: 'user2', password: 'hello', firstname: 'Jane', lastname: 'Doe' },
   ]);
 
   // Inserts seed entries

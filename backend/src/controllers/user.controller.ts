@@ -29,8 +29,8 @@ router.post('/login', async (ctx: Context) => {
 
 router.get('/', async (ctx: Context) => {
   ctx.body = 'user user user';
-  // const book = Book.query();
-  // ctx.body = await book;
+  const users = User.query();
+  ctx.body = await users;
 });
 
 export default router;

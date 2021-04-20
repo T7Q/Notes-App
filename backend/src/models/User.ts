@@ -4,8 +4,8 @@ export default class User extends Model {
   id!: number;
   username!: string;
   password!: string;
-  firstname!: string
-  lastname!: string
+  firstname!: string;
+  lastname!: string;
 
   static tableName = 'users';
 
@@ -20,4 +20,25 @@ export default class User extends Model {
       lastname: { type: 'string', minLength: 1, maxLength: 255 },
     },
   };
+
+  static relationMappings = () => ({
+    notes: {
+      relation: Model.ManyToManyRelation,
+
+      // The related model.
+      modelClass: Person,
+
+      join: {
+        from: 'movies.id',
+
+        // ManyToMany relation needs the `through` object to describe the join table.
+        through: {
+          from: 'persons_movies.movieId',
+          to: 'persons_movies.personId',
+        },
+
+        to: 'persons.id',
+      },
+    },
+  });
 }
