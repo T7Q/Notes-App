@@ -1,8 +1,8 @@
-import { Model } from 'objection';
+import { Model, QueryBuilder } from 'objection';
 import User from './User';
 export default class Note extends Model {
   id!: number;
-  author!: string;
+  author!: number;
   title!: string;
   description!: string;
 
@@ -21,9 +21,11 @@ export default class Note extends Model {
 
   static get relationMappings() {
     return {
-      author: {
+      authors: {
         relation: Model.HasOneRelation,
         modelClass: User,
+        filter: (query: QueryBuilder<User>) =>
+          query.select('id', 'username', 'firstname', 'lastname'),
         join: {
           from: 'notes.author',
           to: 'users.id',

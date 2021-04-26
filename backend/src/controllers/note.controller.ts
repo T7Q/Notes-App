@@ -9,7 +9,7 @@ const routerOpts: Router.IRouterOptions = {
 const router: Router = new Router(routerOpts);
 
 router.get('/', async (ctx: Context) => {
-  const notes = Note.query();
+  const notes = Note.query().withGraphFetched('authors');
   ctx.body = await notes;
 });
 
